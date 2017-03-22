@@ -7,3 +7,12 @@ c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\Powe
 c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\nunit.framework.xml
 C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.xml
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\PowerPointPlus.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\PowerPointPlus.pdb
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\nunit.framework.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.xml
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\bin\Debug\nunit.framework.xml
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.csprojResolveAssemblyReference.cache
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.pdb

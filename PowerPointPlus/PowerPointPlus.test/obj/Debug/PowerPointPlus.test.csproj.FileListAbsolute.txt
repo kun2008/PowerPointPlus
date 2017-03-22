@@ -9,3 +9,14 @@ c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\Powe
 c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus.test\obj\Debug\PowerPointPlus.test.pdb
 C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus.test\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus.test\bin\Debug\DocumentFormat.OpenXml.xml
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\obj\Debug\PowerPointPlus.test.csprojResolveAssemblyReference.cache
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\obj\Debug\PowerPointPlus.test.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\obj\Debug\PowerPointPlus.test.pdb
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\PowerPointPlus.test.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\PowerPointPlus.test.pdb
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\DocumentFormat.OpenXml.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\nunit.framework.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\PowerPointPlus.dll
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\PowerPointPlus.pdb
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\DocumentFormat.OpenXml.xml
+D:\PowerPointPlus\PowerPointPlus\PowerPointPlus\PowerPointPlus.test\bin\Debug\nunit.framework.xml

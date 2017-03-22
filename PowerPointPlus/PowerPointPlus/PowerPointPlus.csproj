@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="PPTPlus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableCellInfo.cs" />
     <Compile Include="TextData.cs" />
   </ItemGroup>
   <ItemGroup>

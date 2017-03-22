@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using A = DocumentFormat.OpenXml.Drawing;
 
 namespace PowerPointPlus
 {
@@ -72,11 +73,11 @@ namespace PowerPointPlus
         /// <summary>
         /// 文本对齐:Left、Right、Center
         /// </summary>
-        public TextAlign TextAlign { get; set; }
+        public A.TextAlignmentTypeValues TextAlign { get; set; }
         /// <summary>
         /// 文本位置:Top、Center、Bottom
         /// </summary>
-        public TextLocation TextLocation { get; set; }
+        public A.TextAnchoringTypeValues TextLocation { get; set; }
     }
     /// <summary>
     /// 文字信息

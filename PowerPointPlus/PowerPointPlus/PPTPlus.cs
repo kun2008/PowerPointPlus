@@ -23,10 +23,11 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Presentation;
 using A = DocumentFormat.OpenXml.Drawing;
+using P14 = DocumentFormat.OpenXml.Office2010.PowerPoint;
 
 namespace PowerPointPlus
 {
-    public class PPTPlus
+    public static class PPTPlus
     {
         /// <summary>
         /// ID计数器，防止ID重复
@@ -54,6 +55,172 @@ namespace PowerPointPlus
             {
                 return null;
             }
+        }
+
+
+        public static bool CreateTable(this SlidePart slidePart, Table table)
+        {
+            if (slidePart == null || table == null)
+            {
+                return false;
+            }
+            _idCounter++;
+            // Declare and instantiate the graphic Frame of the new slide
+            GraphicFrame graphicFrame = slidePart.Slide.CommonSlideData.ShapeTree.AppendChild(new GraphicFrame());
+
+            // Specify the required Frame properties of the graphicFrame
+            ApplicationNonVisualDrawingPropertiesExtension applicationNonVisualDrawingPropertiesExtension = new ApplicationNonVisualDrawingPropertiesExtension() { Uri = "{D42A27DB-BD31-4B8C-83A1-F6EECF244321}" };
+            P14.ModificationId modificationId1 = new P14.ModificationId() { Val = 3229994563U };
+            modificationId1.AddNamespaceDeclaration("p14", "http://schemas.microsoft.com/office/powerpoint/2010/main");
+            applicationNonVisualDrawingPropertiesExtension.Append(modificationId1);
+            graphicFrame.NonVisualGraphicFrameProperties = new NonVisualGraphicFrameProperties
+            (new NonVisualDrawingProperties() { Id = _idCounter, Name = "table "+ _idCounter },
+            new NonVisualGraphicFrameDrawingProperties(new A.GraphicFrameLocks() { NoGrouping = true }),
+            new ApplicationNonVisualDrawingProperties(new ApplicationNonVisualDrawingPropertiesExtensionList(applicationNonVisualDrawingPropertiesExtension)));
+
+            //table的位置，大小
+            graphicFrame.Transform = new Transform(new A.Offset()
+            {
+                X = table.RectArea.X, Y = table.RectArea.Y
+            }, new A.Extents()
+            {
+                Cx = table.RectArea.Width, Cy = table.RectArea.Height
+            });
+
+            // Specify the Griaphic of the graphic Frame
+            graphicFrame.Graphic = new A.Graphic(new A.GraphicData(CreateTable(table)) { Uri = "http://schemas.openxmlformats.org/drawingml/2006/table" });
+            return true;
+        }
+        private static A.Table CreateTable(Table data)
+        {
+            
+            A.Table table = new A.Table();
+
+            // Specify the required table properties for the table
+            A.TableProperties tableProperties = new A.TableProperties() { FirstRow = true, BandRow = true };
+            A.TableStyleId tableStyleId = new A.TableStyleId();
+            tableStyleId.Text = "{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}";
+
+            tableProperties.Append(tableStyleId);
+
+            // Declare and instantiate tablegrid and colums
+            A.TableGrid tableGrid1 = new A.TableGrid();
+            foreach (var item in data.ColWidths)
+            {
+                tableGrid1.Append(new A.GridColumn()
+                {
+                    Width = item
+                });
+            }
+            table.Append(tableProperties);
+            table.Append(tableGrid1);
+            A.TableRow rowHeader = new A.TableRow() { Height = data.RowHeader.Height };
+            foreach (var item in data.RowHeader.RowData)
+            {
+
+                rowHeader.Append(CreateTextCell(item));
+                
+            }
+            table.Append(rowHeader);
+            foreach (var item in data.RowData)
+            {
+                A.TableRow row = new A.TableRow() { Height = data.RowHeader.Height };
+                foreach (var cell in item.RowData)
+                {
+                    row.Append(CreateTextCell(cell));
+                }
+                table.Append(row);
+            }
+            return table;
+        }
+
+        private static A.TableCell CreateTextCell(Cell cell)
+        {
+
+            A.TableCell tableCell4 = new A.TableCell();
+
+            A.TextBody textBody4 = new A.TextBody();
+            A.BodyProperties bodyProperties4 = new A.BodyProperties();
+            A.ListStyle listStyle4 = new A.ListStyle();
+
+            A.Paragraph paragraph4 = new A.Paragraph();
+            A.ParagraphProperties paragraphProperties1 = new A.ParagraphProperties() { Alignment = cell.TextAlign};
+
+            A.Run run2 = new A.Run();
+
+            A.RunProperties runProperties2 = new A.RunProperties() { Language = "zh-CN", AlternativeLanguage = "en-US", FontSize = (Int32Value)cell.FontSize*100, Bold = cell.Bold, Italic = cell.Italic, Dirty = false };
+            runProperties2.SetAttribute(new OpenXmlAttribute("", "smtClean", "", "0"));
+
+            if (!string.IsNullOrEmpty(cell.BackColor))
+            {
+                A.SolidFill solidFill10 = new A.SolidFill();
+                A.RgbColorModelHex rgbColorModelHex1 = new A.RgbColorModelHex()
+                {
+                    Val =cell.BackColor
+                };
+
+                solidFill10.Append(rgbColorModelHex1);
+                runProperties2.Append(solidFill10);
+            }
+  
+            A.LatinFont latinFont10 = new A.LatinFont() { Typeface = cell.FontName, Panose = "020B0503020204020204", PitchFamily = 34, CharacterSet = -122 };
+            A.EastAsianFont eastAsianFont10 = new A.EastAsianFont() { Typeface = cell.FontName, Panose = "020B0503020204020204", PitchFamily = 34, CharacterSet = -122 };
+
+            
+            runProperties2.Append(latinFont10);
+            runProperties2.Append(eastAsianFont10);
+            A.Text text2 = new A.Text();
+            text2.Text = cell.TextValue;
+
+            run2.Append(runProperties2);
+            run2.Append(text2);
+
+            A.EndParagraphRunProperties endParagraphRunProperties4 = new A.EndParagraphRunProperties() { Language = "zh-CN", AlternativeLanguage = "en-US", FontSize = 2000, Bold = true, Italic = true, Dirty = false };
+
+            if (!string.IsNullOrEmpty(cell.BackColor))
+            {
+                A.SolidFill solidFill11 = new A.SolidFill();
+                A.RgbColorModelHex rgbColorModelHex2 = new A.RgbColorModelHex()
+                {
+                    Val = cell.BackColor
+                };
+
+                solidFill11.Append(rgbColorModelHex2);
+                endParagraphRunProperties4.Append(solidFill11);
+            }
+
+            A.LatinFont latinFont11 = new A.LatinFont() { Typeface = cell.FontName, Panose = "020B0503020204020204", PitchFamily = 34, CharacterSet = -122 };
+            A.EastAsianFont eastAsianFont11 = new A.EastAsianFont() { Typeface = cell.FontName, Panose = "020B0503020204020204", PitchFamily = 34, CharacterSet = -122 };
+
+            
+            endParagraphRunProperties4.Append(latinFont11);
+            endParagraphRunProperties4.Append(eastAsianFont11);
+
+            paragraph4.Append(paragraphProperties1);
+            paragraph4.Append(run2);
+            paragraph4.Append(endParagraphRunProperties4);
+
+            textBody4.Append(bodyProperties4);
+            textBody4.Append(listStyle4);
+            textBody4.Append(paragraph4);
+
+            A.TableCellProperties tableCellProperties4 = new A.TableCellProperties() { Anchor = cell.TextLocation };
+
+            
+            if (!string.IsNullOrEmpty(cell.FontColor))
+            {
+                A.SolidFill solidFill12 = new A.SolidFill();
+                A.RgbColorModelHex rgbColorModelHex3 = new A.RgbColorModelHex()
+                {
+                    Val = cell.FontColor
+                };
+                solidFill12.Append(rgbColorModelHex3);
+                tableCellProperties4.Append(solidFill12);
+            }
+            tableCell4.Append(textBody4);
+            tableCell4.Append(tableCellProperties4);
+            return tableCell4;
+
         }
 
         /// <summary>
@@ -117,7 +284,7 @@ namespace PowerPointPlus
         /// <param name="slidePart"></param>
         /// <param name="textData"></param>
         /// <returns></returns>
-        public static bool CreateText(SlidePart slidePart,TextData textData)
+        public static bool CreateText(this SlidePart slidePart,TextData textData)
         {
             if (slidePart == null || textData == null)
             {
@@ -174,8 +341,7 @@ namespace PowerPointPlus
 
             TextBody textBody1 = new TextBody();
 
-            A.BodyProperties bodyProperties1 = new A.BodyProperties() { Wrap = A.TextWrappingValues.Square,
-                RightToLeftColumns = false, Anchor = (A.TextAnchoringTypeValues)(Enum.Parse(typeof(A.TextAnchoringTypeValues),textData.TextLocation.ToString())) };
+            A.BodyProperties bodyProperties1 = new A.BodyProperties() { Wrap = A.TextWrappingValues.Square,RightToLeftColumns = false, Anchor = textData.TextLocation };
 
             A.ShapeAutoFit shapeAutoFit1 = new A.ShapeAutoFit();
 
@@ -184,7 +350,7 @@ namespace PowerPointPlus
             A.ListStyle listStyle1 = new A.ListStyle();
 
             A.Paragraph paragraph1 = new A.Paragraph();
-            A.ParagraphProperties paragraphProperties1 = new A.ParagraphProperties() { Alignment = (A.TextAlignmentTypeValues)(Enum.Parse(typeof(A.TextAlignmentTypeValues),textData.TextAlign.ToString())) };
+            A.ParagraphProperties paragraphProperties1 = new A.ParagraphProperties(){ Alignment = textData.TextAlign };
 
             A.Run run1 = new A.Run();
 
