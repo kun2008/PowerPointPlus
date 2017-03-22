@@ -1,0 +1,9 @@
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\PowerPointPlus.dll
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\PowerPointPlus.pdb
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.dll
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\obj\Debug\PowerPointPlus.pdb
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\nunit.framework.dll
+c:\users\administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\nunit.framework.xml
+C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Administrator\documents\visual studio 2015\Projects\PowerPointPlus\PowerPointPlus\bin\Debug\DocumentFormat.OpenXml.xml
